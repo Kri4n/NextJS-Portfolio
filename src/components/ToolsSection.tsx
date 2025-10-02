@@ -31,16 +31,16 @@ const ToolsSection = () => {
             <p className="d-block pt-3">JavaScript</p>
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="300">
-            <Image src="/mysql.png" alt="mysql.png" width={140} height={140} />
+            <Image src="/MySQL.png" alt="mysql.png" width={140} height={140} />
             <p className="d-block pt-3">MySQL</p>
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="300">
-            <Image src="/php.png" alt="php.png" width={140} height={140} />
+            <Image src="/PHP.png" alt="php.png" width={140} height={140} />
             <p className="d-block pt-3">PHP</p>
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="300">
             <Image
-              src="/postman.png"
+              src="/Postman.png"
               alt="postman.png"
               width={140}
               height={140}
@@ -64,8 +64,8 @@ const ToolsSection = () => {
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="250">
             <Image
-              src="/express.png"
-              alt="express.png"
+              src="/Express.png"
+              alt="Express.png"
               width={140}
               height={140}
             />
@@ -81,7 +81,7 @@ const ToolsSection = () => {
             <p className="d-block pt-3">NodeJS</p>
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="250">
-            <Image src="/react.png" alt="react.png" width={140} height={140} />
+            <Image src="/React.png" alt="react.png" width={140} height={140} />
             <p className="d-block pt-3">React</p>
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="250">
@@ -127,7 +127,7 @@ const ToolsSection = () => {
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="200">
             <Image
-              src="/csharp.png"
+              src="/CSharp.png"
               alt="csharp.png"
               width={140}
               height={140}
