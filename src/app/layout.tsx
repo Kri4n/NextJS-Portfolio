@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    url: "https://yourdomain.com",
+    url: "https://kri4n.vercel.app",
     title: "Krian • Software Engineer",
     description:
       "Portfolio of Krian Lloyd Lerry, a Software Engineer skilled in MERN, Flutter, Next.js and more.",
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
       },
     ],
   },
-  metadataBase: new URL("https://yourdomain.com"), // ensures correct absolute URLs
+  metadataBase: new URL("https://kri4n.vercel.app"), // ensures correct absolute URLs
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: "https://kri4n.vercel.app",
   },
 };
 
