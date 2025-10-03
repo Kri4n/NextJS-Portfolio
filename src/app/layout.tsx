@@ -14,11 +14,12 @@ const robotoSlab = Roboto_Slab({
 });
 
 export const metadata: Metadata = {
-  title: "Krian • Software Engineer",
+  title: "Krian Lloyd Lerry | Software Engineer | Portfolio",
   description:
     "Portfolio of Krian Lloyd Lerry, a Filipino Software Engineer skilled in MERN, Flutter, Next.js and more.",
   keywords: [
     "Krian Lloyd Lerry",
+    "Krian",
     "Software Engineer",
     "Full Stack Developer",
     "MERN",
