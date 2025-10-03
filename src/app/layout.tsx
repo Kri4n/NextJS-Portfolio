@@ -11,7 +11,6 @@ const montserrat = Montserrat({
 
 const robotoSlab = Roboto_Slab({
   subsets: ["latin"],
-  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
