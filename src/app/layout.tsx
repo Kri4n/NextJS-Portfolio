@@ -1,10 +1,8 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import Head from "next/head";
 import { Montserrat, Roboto_Slab } from "next/font/google";
-import AOSInit from "@/components/AOSInit";
-import BootstrapInit from "@/components/BootstrapInit";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -77,11 +75,7 @@ export default function RootLayout({
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js" />
         <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js" />
 
-        {/* Bootstrap JS */}
-        <BootstrapInit />
-
-        {/* AOS Script */}
-        <AOSInit />
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       </body>
     </html>
   );

@@ -33,6 +33,7 @@ const AboutMeSection = () => {
                   data-aos-offset="190"
                   className="img-fluid"
                   alt="hobbies.jpg"
+                  unoptimized
                   width={400}
                   height={400}
                 />
@@ -54,6 +55,7 @@ const AboutMeSection = () => {
                   data-aos-offset="240"
                   className="img-fluid"
                   alt="strength.jpg"
+                  unoptimized
                   width={400}
                   height={400}
                 />
@@ -75,6 +77,7 @@ const AboutMeSection = () => {
                   data-aos-offset="290"
                   className="img-fluid"
                   alt="goals.gif"
+                  unoptimized
                   width={400}
                   height={400}
                 />
