@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kri4n.vercel.app/sitemap.xml

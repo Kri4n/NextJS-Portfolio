@@ -1,6 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 
 const Navbar = () => {
+  useEffect(() => {
+    const links = document.querySelectorAll<HTMLAnchorElement>(
+      "#main-nav .nav-link"
+    );
+
+    const handleClick = (event: Event) => {
+      links.forEach((navLink) => navLink.classList.remove("active"));
+      (event.currentTarget as HTMLAnchorElement).classList.add("active");
+    };
+
+    links.forEach((link) => link.addEventListener("click", handleClick));
+
+    // cleanup to prevent duplicate listeners
+    return () => {
+      links.forEach((link) => link.removeEventListener("click", handleClick));
+    };
+  }, []);
+
   return (
     <>
       {/* Navbar Start */}

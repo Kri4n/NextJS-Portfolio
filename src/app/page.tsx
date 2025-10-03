@@ -1,9 +1,5 @@
 "use client";
 
-import AOS from "aos";
-import { useEffect } from "react";
-import "aos/dist/aos.css";
-
 import AboutMeSection from "@/components/AboutMeSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -11,14 +7,12 @@ import LandingSection from "@/components/LandingSection";
 import Navbar from "@/components/Navbar";
 import ProjectsSection from "@/components/ProjectsSection";
 import ToolsSection from "@/components/ToolsSection";
+import ClientProviders from "@/ClientProviders";
 
 export default function Home() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
     <>
+      <ClientProviders /> {/* Bootstrap + AOS init */}
       <Navbar />
       <LandingSection />
       <ProjectsSection />

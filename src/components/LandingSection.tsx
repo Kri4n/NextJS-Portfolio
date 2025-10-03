@@ -49,7 +49,7 @@ const LandingSection = () => {
               <div className="d-flex gap-3 ps-3 pb-3">
                 <a
                   className="fade-in"
-                  href="https:{/*github.com/Kri4n"
+                  href="https://github.com/Kri4n"
                   target="_blank"
                 >
                   <img
@@ -61,7 +61,7 @@ const LandingSection = () => {
 
                 <a
                   className="fade-in"
-                  href="https:{/*www.linkedin.com/in/krian-lloyd-lerry-551a19324/"
+                  href="https://www.linkedin.com/in/krian-lloyd-lerry-551a19324/"
                   target="_blank"
                 >
                   <img
@@ -73,7 +73,7 @@ const LandingSection = () => {
 
                 <a
                   className="fade-in"
-                  href="https:{/*www.facebook.com/Kri4n"
+                  href="https://www.facebook.com/Kri4n"
                   target="_blank"
                 >
                   <img

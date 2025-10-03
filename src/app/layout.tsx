@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Head from "next/head";
 import { Montserrat, Roboto_Slab } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "aos/dist/aos.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -16,7 +17,7 @@ const robotoSlab = Roboto_Slab({
 export const metadata: Metadata = {
   title: "Krian • Software Engineer",
   description:
-    "Portfolio of Krian Lloyd Lerry, a Software Engineer skilled in MERN, Flutter, Next.js and more.",
+    "Portfolio of Krian Lloyd Lerry, a Filipino Software Engineer skilled in MERN, Flutter, Next.js and more.",
   keywords: [
     "Krian Lloyd Lerry",
     "Software Engineer",
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "Web Developer",
     "React.js",
   ],
-  authors: [
-    { name: "Krian Lloyd Lerry", url: "https://web.facebook.com/Kri4n/" },
-  ],
+  authors: [{ name: "Krian Lloyd Lerry", url: "https://kri4n.vercel.app" }],
   openGraph: {
     type: "website",
     url: "https://kri4n.vercel.app",
