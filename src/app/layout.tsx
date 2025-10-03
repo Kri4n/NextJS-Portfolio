@@ -61,7 +61,7 @@ export default function RootLayout({
       <head>
         <meta
           name="google-site-verification"
-          content="google-site-verification: google5d08b0297611da1e.html"
+          content="google5d08b0297611da1e.html"
         />
 
         {/* CSS Animations */}
