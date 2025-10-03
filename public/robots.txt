@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://kri4n.vercel.app
+
+# Sitemaps
 Sitemap: https://kri4n.vercel.app/sitemap.xml
