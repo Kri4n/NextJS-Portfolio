@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Head from "next/head";
 import { Montserrat, Roboto_Slab } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "aos/dist/aos.css";
@@ -59,13 +58,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="google-site-verification: google5d08b0297611da1e.html"
+        />
+
         {/* CSS Animations */}
         <link
           href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
           rel="stylesheet"
         />
-      </Head>
+      </head>
       <body className={`${montserrat.className} ${robotoSlab.className}`}>
         {children}
 
