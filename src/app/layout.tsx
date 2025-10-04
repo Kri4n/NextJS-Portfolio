@@ -33,16 +33,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://kri4n.vercel.app",
-    title: "Krian • Software Engineer",
+    title: "Krian Lloyd Lerry | Software Engineer | Portfolio",
     description:
       "Portfolio of Krian Lloyd Lerry, a Software Engineer skilled in MERN, Flutter, Next.js and more.",
     siteName: "Krian Lloyd Lerry | Portfolio",
     images: [
       {
-        url: "https://yourdomain.com/preview.png", // Replace with your image
+        url: "https://kri4n.vercel.app/mylogo.jpg", // Replace with your image
         width: 1200,
         height: 630,
-        alt: "Krian Lloyd Lerry Portfolio Preview",
+        alt: "Krian Lloyd Lerry Portfolio",
       },
     ],
   },
