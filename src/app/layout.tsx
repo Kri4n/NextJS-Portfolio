@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     siteName: "Krian Lloyd Lerry | Portfolio",
     images: [
       {
-        url: "https://kri4n.vercel.app/mylogo.jpg", // Replace with your image
+        url: "https://kri4n.vercel.app/krian.jpg",
         width: 1200,
         height: 630,
         alt: "Krian Lloyd Lerry Portfolio",
       },
     ],
   },
-  metadataBase: new URL("https://kri4n.vercel.app"), // ensures correct absolute URLs
+  metadataBase: new URL("https://kri4n.vercel.app"),
   alternates: {
     canonical: "https://kri4n.vercel.app",
   },
