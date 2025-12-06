@@ -160,8 +160,8 @@ const ToolsSection = () => {
         <div className="d-flex pb-5 flex-md-row flex-column gap-5 justify-content-center align-items-center">
           <div className="rotate" data-aos="zoom-in" data-aos-offset="200">
             <Image
-              src="/NET Core.png"
-              alt="NET Core.png"
+              src="/dotnetcore.png"
+              alt="dotnetcore.png"
               width={140}
               height={140}
             />
