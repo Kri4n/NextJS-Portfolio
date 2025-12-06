@@ -148,19 +148,24 @@ const ToolsSection = () => {
             <p className="d-block pt-3">Dart</p>
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="200">
-            <Image src="/Redis.png" alt="Redis.png" width={140} height={140} />
-            <p className="d-block pt-3">Redis</p>
+            <Image
+              src="/Angular.png"
+              alt="Angular.png"
+              width={140}
+              height={140}
+            />
+            <p className="d-block pt-3">Angular</p>
           </div>
         </div>
         <div className="d-flex pb-5 flex-md-row flex-column gap-5 justify-content-center align-items-center">
           <div className="rotate" data-aos="zoom-in" data-aos-offset="200">
             <Image
-              src="/SQLite.png"
-              alt="SQLite.png"
+              src="/NET Core.png"
+              alt="NET Core.png"
               width={140}
               height={140}
             />
-            <p className="d-block pt-3">SQLite</p>
+            <p className="d-block pt-3">.NET Core</p>
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="200">
             <Image
@@ -199,12 +204,12 @@ const ToolsSection = () => {
           </div>
           <div className="rotate" data-aos="zoom-in" data-aos-offset="200">
             <Image
-              src="/Nest.js.png"
-              alt="NestJS.png"
+              src="/ms_sql_server.png"
+              alt="ms_sql_server.png"
               width={140}
               height={140}
             />
-            <p className="d-block pt-3">NestJS</p>
+            <p className="d-block pt-3">SQL Server</p>
           </div>
         </div>
       </section>
