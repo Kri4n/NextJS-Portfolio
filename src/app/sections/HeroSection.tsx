@@ -103,7 +103,7 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
               <ArrowRight className="w-4 h-4" />
             </motion.span>
           </Button>
-          <Link href="/resume/Resume_Lerry.pdf" target="_blank">
+          <Link href="/docs/Resume_Lerry.pdf" target="_blank">
             <Button
               variant="outline"
               data-hover
