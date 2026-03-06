@@ -9,6 +9,9 @@
     "lint": "eslint",
     "postbuild": "next-sitemap"
   },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "1.29.2"
+  },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
