@@ -1,17 +1,5 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Montserrat, Roboto_Slab } from "next/font/google";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "aos/dist/aos.css";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-const robotoSlab = Roboto_Slab({
-  subsets: ["latin"],
-});
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Krian Lloyd Lerry | Software Engineer | Portfolio",
@@ -39,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Krian Lloyd Lerry | Portfolio",
     images: [
       {
-        url: "https://kri4n.vercel.app/krian.jpg",
+        url: "https://kri4n.vercel.app/images/krian.png",
         width: 1200,
         height: 630,
         alt: "Krian Lloyd Lerry Portfolio",
@@ -54,9 +42,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <head>
@@ -64,21 +52,9 @@ export default function RootLayout({
           name="google-site-verification"
           content="google5d08b0297611da1e"
         />
-
-        {/* CSS Animations */}
-        <link
-          href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
-          rel="stylesheet"
-        />
       </head>
-      <body className={`${montserrat.className} ${robotoSlab.className}`}>
+      <body className="font-dm-sans antialiased  bg-[#0a0a0a] text-[#e8e3da] min-h-screen cursor-none">
         {children}
-
-        {/* Vanta.js */}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js" />
-        <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js" />
-
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       </body>
     </html>
   );

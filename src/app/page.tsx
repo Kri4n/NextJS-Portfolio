@@ -1,25 +1,65 @@
 "use client";
 
-import AboutMeSection from "@/components/AboutMeSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
-import LandingSection from "@/components/LandingSection";
-import Navbar from "@/components/Navbar";
-import ProjectsSection from "@/components/ProjectsSection";
-import ToolsSection from "@/components/ToolsSection";
-import ClientProviders from "@/ClientProviders";
+import { useState, useEffect } from "react";
+
+import Navbar from "@/components/layout/Navbar";
+import HeroSection from "@/app/sections/HeroSection";
+import AboutSection from "@/app/sections/AboutSection";
+import SkillsSection from "@/app/sections/SkillsSection";
+import ProjectsSection from "@/app/sections/ProjectSection";
+import ExperienceSection from "@/app/sections/ExperienceSection";
+import ContactSection from "@/app/sections/ContactSection";
+import Footer from "@/components/layout/Footer";
+import Cursor from "@/shared/Cursor";
+import { NAV_ITEMS } from "../data";
+
+function Divider() {
+  return (
+    <div className="max-w-275 mx-auto px-8">
+      <div className="h-px divider-gradient" />
+    </div>
+  );
+}
 
 export default function Home() {
+  const [activeNav, setActiveNav] = useState("home");
+
+  useEffect(() => {
+    const sections = NAV_ITEMS.map((id) => document.getElementById(id)).filter(
+      Boolean,
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveNav(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+    );
+
+    sections.forEach((el) => observer.observe(el!));
+    return () => observer.disconnect();
+  });
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <>
-      <ClientProviders /> {/* Bootstrap + AOS init */}
-      <Navbar />
-      <LandingSection />
+    <main>
+      <Cursor />
+      <Navbar activeNav={activeNav} navItems={NAV_ITEMS} scrollTo={scrollTo} />
+      <HeroSection scrollTo={scrollTo} />
+      <AboutSection />
+      <Divider />
+      <SkillsSection />
+      <Divider />
       <ProjectsSection />
-      <AboutMeSection />
-      <ToolsSection />
+      <Divider />
+      <ExperienceSection />
       <ContactSection />
       <Footer />
-    </>
+    </main>
   );
 }
