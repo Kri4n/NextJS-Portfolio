@@ -12,6 +12,8 @@ import ContactSection from "@/app/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import Cursor from "@/shared/Cursor";
 import { NAV_ITEMS } from "../data";
+import ParticlesBackground from "@/shared/ParticlesBackground";
+import ChatWidget from "@/shared/ChatWidget";
 
 function Divider() {
   return (
@@ -47,7 +49,8 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="relative">
+      <ParticlesBackground />
       <Cursor />
       <Navbar activeNav={activeNav} navItems={NAV_ITEMS} scrollTo={scrollTo} />
       <HeroSection scrollTo={scrollTo} />
@@ -58,8 +61,10 @@ export default function Home() {
       <ProjectsSection />
       <Divider />
       <ExperienceSection />
+      <Divider />
       <ContactSection />
       <Footer />
+      <ChatWidget />
     </main>
   );
 }

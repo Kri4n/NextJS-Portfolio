@@ -53,7 +53,7 @@ export default function RootLayout({
           content="google5d08b0297611da1e"
         />
       </head>
-      <body className="font-dm-sans antialiased  bg-[#0a0a0a] text-[#e8e3da] min-h-screen cursor-none">
+      <body className="font-dm-sans antialiased bg-[#0a0a0a] text-[#e8e3da] cursor-none">
         {children}
       </body>
     </html>

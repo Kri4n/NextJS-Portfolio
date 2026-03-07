@@ -50,16 +50,6 @@ function RevealSection({
   );
 }
 
-function Divider() {
-  return (
-    <div className="max-w-275 mx-auto px-8">
-      <div className="h-px divider-gradient" />
-    </div>
-  );
-}
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-
 const contactLinks = [
   {
     label: "Email",
@@ -124,7 +114,6 @@ function ContactButton({
 export default function ContactSection() {
   return (
     <section id="contact" className="py-28 pb-20 px-8 max-w-275 mx-auto">
-      <Divider />
       <div className="h-20" />
 
       <RevealSection>

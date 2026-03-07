@@ -10,8 +10,8 @@ const Footer = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <p className="text-xs text-gray-700">© 2026 Krian Lloyd Lerry</p>
-      <p className="text-xs text-gray-700 flex items-center gap-1.5">
+      <p className="text-xs text-gray-400">© 2026 Krian Lloyd Lerry</p>
+      <p className="text-xs text-gray-400 flex items-center gap-1.5">
         <MapPin className="w-3 h-3" />
         Mandaluyong City, Metro Manila, PH
       </p>

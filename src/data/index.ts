@@ -48,30 +48,29 @@ export const skills: Record<string, string[]> = {
 export const projects = [
   {
     name: "FindThere",
-    tag: "Lost and Found",
+    tag: "Lost & Found",
     description:
-      "A full stack lost and found / lost item finder web application. Deployment in Progress",
+      "A full stack lost and found / lost item finder web application. Deployment in Progress.",
     stack: ["Node JS", "Nest JS", "React", "Tailwind CSS", "TypeScript"],
     link: "https://www.youtube.com/watch?v=FPHVL2vmi9Y",
-    num: "01",
+    image: "/images/projects/findthere.png",
   },
   {
     name: "FitMeter",
-    tag: "Fitness Tracker",
+    tag: "Fitness Mobile App",
     description:
-      "Fitness tracker mobile app enabling users to create and track workout sessions, built with Flutter/Dart and a Node.js + MongoDB backend.",
+      "Fitness tracker mobile app enabling users to create and track workout sessions.",
     stack: ["Flutter", "Dart", "MongoDB", "Node.js", "Express.js"],
     link: "https://drive.google.com/file/d/1esytfnvfVO28MyuKWHqMtjps8WsxMQj_/view?usp=sharing",
-    num: "02",
+    image: "/images/projects/FitMeter.png",
   },
   {
     name: "Cartify",
     tag: "E-Commerce",
-    description:
-      "Full-stack eCommerce app built with MERN, deployed on AWS. Migrated to Next.js for SSR with TypeScript, redeployed on Vercel and Render.",
+    description: "Full-stack eCommerce capstone project from our bootcamp.",
     stack: ["Next.js", "TypeScript", "MongoDB", "AWS"],
     link: "https://cartify-io.vercel.app/",
-    num: "03",
+    image: "/images/projects/cartify.png",
   },
   {
     name: "Gomegle",
@@ -79,15 +78,14 @@ export const projects = [
     description: "A real time chat app omegle inspired made with Go.",
     stack: ["Go", "WebSocket", "HTML", "JavaScript"],
     link: "https://gomegle.onrender.com/",
-    num: "04",
+    image: "/images/projects/Gomegle.jpg",
   },
   {
     name: "WriteScape",
-    tag: "Blogging Platform",
-    description:
-      "Interactive blogging platform where users write, share, and explore content. Built with React, MongoDB, Express.js, and Node.js, deployed on Vercel.",
+    tag: "Blog",
+    description: "Interactive blogging platform",
     stack: ["React", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
     link: "https://writescape.vercel.app/",
-    num: "05",
+    image: "/images/projects/writescape.png",
   },
 ];

@@ -202,9 +202,9 @@ function EducationCard() {
           <div>
             <p className="text-[0.65rem] tracking-[0.25em] uppercase text-amber-500 mb-3 flex items-center gap-2">
               <GraduationCap className="w-3 h-3" />
-              Education
+              COLLEGE
             </p>
-            <h4 className="text-base font-medium mb-1">
+            <h4 className="text-base text-gray-500 font-medium mb-1">
               University of San Agustin
             </h4>
             <p className="text-[0.85rem] text-gray-500">
@@ -216,7 +216,9 @@ function EducationCard() {
               <Code2 className="w-3 h-3" />
               Bootcamp
             </p>
-            <h4 className="text-base font-medium mb-1">Zuitt Tech Program</h4>
+            <h4 className="text-base font-medium mb-1 text-gray-500 ">
+              Zuitt Tech Program
+            </h4>
             <p className="text-[0.85rem] text-gray-500">
               Main Course Package · Sept 2024 – Jan 2025
             </p>

@@ -13,15 +13,28 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-28 px-8 max-w-275 mx-auto">
       {/* Heading */}
-      <div className="mb-16">
-        <p className="text-xs tracking-[0.3em] uppercase text-amber-500 mb-4 flex items-center gap-3">
+      <motion.div
+        className="mb-16"
+        variants={staggerContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.p
+          className="text-xs tracking-[0.3em] uppercase text-amber-500 mb-4 flex items-center gap-3"
+          variants={staggerItemVariants}
+        >
           <span className="inline-block w-6 h-px bg-amber-500" />
           Skills
-        </p>
-        <h2 className="font-playfair text-[clamp(2rem,4vw,3.5rem)] leading-[1.1]">
+        </motion.p>
+
+        <motion.h2
+          className="font-playfair text-[clamp(2rem,4vw,3.5rem)] leading-[1.1]"
+          variants={staggerItemVariants}
+        >
           The <span className="italic text-amber-500">tech</span> I wield
-        </h2>
-      </div>
+        </motion.h2>
+      </motion.div>
 
       {/* Skill Cards */}
       <motion.div
