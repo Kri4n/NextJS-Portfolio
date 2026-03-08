@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data";
-import { fadeUpVariants } from "../../shared/animations";
+import { fadeUpVariants } from "../../components/shared/animations";
 import Image from "next/image";
 import { useRef } from "react";
 

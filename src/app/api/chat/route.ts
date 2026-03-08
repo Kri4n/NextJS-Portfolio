@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
+import { SYSTEM_PROMPT } from "@/lib/prompts/system-prompt";
 
 /* ─────────────────────────────────────────────
    Rate Limiting (in-memory, per IP)
+   Gemini free tier: 20 RPD, 5 RPM globally
+   We limit each IP to 5 requests/day to protect
+   the shared daily quota across all visitors.
 ───────────────────────────────────────────── */
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT = 20;
-const RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_LIMIT = 5; // max requests per IP per day
+const RATE_WINDOW_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -24,76 +28,24 @@ function isRateLimited(ip: string): boolean {
 }
 
 /* ─────────────────────────────────────────────
-   System Prompt
+   Global daily request counter
+   Tracks total requests across all IPs to stay
+   within Gemini's 20 RPD free tier limit.
 ───────────────────────────────────────────── */
-const SYSTEM_PROMPT = `You are a professional portfolio assistant for Krian Lloyd T. Lerry. Your sole purpose is to answer questions about Krian — his experience, skills, projects, education, and background. Be professional, formal, and concise. If a question is unrelated to Krian, politely decline and redirect the user to ask something about him.
+let globalDailyCount = 0;
+let globalResetAt = Date.now() + 24 * 60 * 60 * 1000;
+const GLOBAL_DAILY_LIMIT = 18; // keep 2 buffer below Gemini's 20 RPD
 
-Here is everything you know about Krian:
-
---- PERSONAL INFO ---
-Full Name: Krian Lloyd T. Lerry
-Location: Mandaluyong City, Metro Manila, Philippines
-Email: lerrylloyd15@gmail.com | krianlloydl@gmail.com
-Phone: +639994698336
-Portfolio: kri4n.vercel.app
-LinkedIn: linkedin.com/in/krian-lloyd-lerry-551a19324/
-GitHub: github.com/Kri4n/
-
---- WORK EXPERIENCE ---
-1. Archangel Technologies, Inc. (Mandaluyong City, Philippines)
-   Role: Junior Software Developer (Full-Time)
-   Duration: May 2025 - Present
-   - Collaborated with cross-functional teams to test and resolve user-reported issues from multiple clients in a Flutter-based employee time and attendance application with VPN connection.
-   - Integrated automated testing in Flutter using integration tests to reduce manual testing effort.
-   - Optimized and improved the API response time for getting the date and time by approximately 60-70%.
-   - Developed a reverse geocoding service to process the location of users.
-   - Set up and managed separate development, staging, and production environments for multiple clients.
-   - Implemented a version checker with automated updates for the application.
-
-2. U&I Global (Brisbane, Australia)
-   Role: Freelance Web Developer (Project-Based)
-   Duration: February 2025 - March 2025
-   - Re-engineered the U & I Global Expo website, enhancing user experience and streamlining the consultation booking process.
-   - Improved UI/UX by implementing a modern, readable, responsive design using React and Tailwind CSS.
-   - Optimized website performance by implementing Single Page Application (SPA) architecture.
-
---- PROJECTS ---
-1. Cartify (Live Demo available)
-   - Full-stack eCommerce application using MERN stack, deployed on AWS.
-   - Migrated to Next.js for SSR with TypeScript, deployed on Vercel and Render.
-
-2. WriteScape (Live Demo available)
-   - Interactive blogging platform using React, MongoDB, Express.js, and Node.js, deployed on Vercel.
-   - Enabled users to write, share, and explore content on various topics.
-
-3. FitMeter (Demo available)
-   - Fitness tracker mobile app using Flutter/Dart, MongoDB, Express.js, and Node.js.
-   - Enabled users to create and track workout sessions.
-
---- SKILLS ---
-Frontend: HTML5, CSS, Bootstrap, JavaScript, React, Next.js, TypeScript, Tailwind CSS
-Backend/Database: MongoDB, Express.js, Node.js, PostgreSQL, MS SQL Server, C#
-Mobile: Flutter, Dart
-Additional: Git, JWT, Postman, Automation Testing, RESTful APIs, Docker, SEO, CI/CD Pipelines, GitLab
-Soft Skills: Time Management, Teamwork, Communication, Resilience, Attention to Detail, Problem Solving
-
---- EDUCATION ---
-1. University of San Agustin
-   Degree: Bachelor of Science in Information Technology
-   Location: General Luna St, Iloilo City Proper, Iloilo City, 5000 Iloilo
-   Duration: Sept 2020 - June 2024
-
-2. Zuitt Tech Program
-   Course: Main Course Package
-   Location: 134 Timog Ave, Diliman, Quezon City, 1103 Metro Manila
-   Duration: Sept 2024 - January 2025
-
---- INSTRUCTIONS ---
-- Only answer questions about Krian Lloyd T. Lerry.
-- If asked about anything unrelated, say: "I'm only able to answer questions about Krian. Feel free to ask about his experience, skills, or projects."
-- Keep answers concise, professional, and formal.
-- When relevant, direct visitors to his contact info or portfolio links.
-- Do not make up information not listed above.`;
+function isGlobalLimitReached(): boolean {
+  const now = Date.now();
+  if (now > globalResetAt) {
+    globalDailyCount = 0;
+    globalResetAt = now + 24 * 60 * 60 * 1000;
+  }
+  if (globalDailyCount >= GLOBAL_DAILY_LIMIT) return true;
+  globalDailyCount++;
+  return false;
+}
 
 /* ─────────────────────────────────────────────
    Types
@@ -108,12 +60,20 @@ interface Message {
 ───────────────────────────────────────────── */
 export async function POST(req: NextRequest) {
   try {
-    // Rate limit
+    // Per-IP rate limit
     const ip =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
     if (isRateLimited(ip)) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },
+        { status: 429 },
+      );
+    }
+
+    // Global daily limit (protects Gemini free tier quota)
+    if (isGlobalLimitReached()) {
+      return NextResponse.json(
+        { error: "Daily request limit reached. Please try again tomorrow." },
         { status: 429 },
       );
     }
@@ -151,12 +111,18 @@ export async function POST(req: NextRequest) {
     // Call Gemini
     const genAI = new GoogleGenAI({ apiKey });
     const response = await genAI.models.generateContent({
-      model: "models/gemini-2.0-flash",
+      model: "gemini-3-flash-preview",
       contents,
       config: {
         systemInstruction: SYSTEM_PROMPT,
       },
     });
+
+    // Log token usage for monitoring
+    const usage = response.usageMetadata;
+    console.log(
+      `[Gemini Usage] tokens: ${usage?.totalTokenCount} | global requests today: ${globalDailyCount}/${GLOBAL_DAILY_LIMIT}`,
+    );
 
     const text = response.text ?? "";
     return NextResponse.json({ reply: text });

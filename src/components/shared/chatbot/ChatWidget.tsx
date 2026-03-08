@@ -2,43 +2,11 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Message } from "@/types";
+import TypingIndicator from "./TypingIndicator";
+import FormattedMessage from "./FormattedMessage";
 
-/* ─────────────────────────────────────────────
-   Types
-───────────────────────────────────────────── */
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-}
-
-/* ─────────────────────────────────────────────
-   Typing Indicator
-───────────────────────────────────────────── */
-function TypingIndicator() {
-  return (
-    <div className="flex items-center gap-1 px-3 py-2">
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className="w-1 h-1 rounded-full bg-amber-400/60"
-          style={{
-            animation: `bounce 1.2s ease-in-out ${i * 0.2}s infinite`,
-          }}
-        />
-      ))}
-      <style>{`
-        @keyframes bounce {
-          0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-          30% { transform: translateY(-4px); opacity: 1; }
-        }
-      `}</style>
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   ChatWidget
-───────────────────────────────────────────── */
+/* ChatWidget */
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -165,7 +133,11 @@ export default function ChatWidget() {
                         : "bg-[#252525] text-white/70 border border-white/6"
                     }`}
                   >
-                    {msg.content}
+                    {msg.role === "assistant" ? (
+                      <FormattedMessage content={msg.content} />
+                    ) : (
+                      msg.content
+                    )}
                   </div>
                 </div>
               ))}

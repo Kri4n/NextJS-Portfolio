@@ -13,7 +13,7 @@ import {
   scaleInVariants,
   staggerContainerVariants,
   staggerItemVariants,
-} from "../../shared/animations";
+} from "../../components/shared/animations";
 
 // ─── Utility Components (could be moved to a shared utils file) ──────────────
 

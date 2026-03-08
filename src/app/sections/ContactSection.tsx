@@ -14,7 +14,7 @@ import {
   fadeUpVariants,
   staggerContainerVariants,
   staggerItemVariants,
-} from "../../shared/animations";
+} from "../../components/shared/animations";
 
 // ─── Utility Components ──────────────────────────────────────────────────────
 

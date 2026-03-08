@@ -7,7 +7,7 @@ import { skills } from "@/data";
 import {
   staggerContainerVariants,
   staggerItemVariants,
-} from "../../shared/animations";
+} from "../../components/shared/animations";
 
 export default function SkillsSection() {
   return (

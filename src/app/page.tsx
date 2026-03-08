@@ -10,10 +10,10 @@ import ProjectsSection from "@/app/sections/ProjectSection";
 import ExperienceSection from "@/app/sections/ExperienceSection";
 import ContactSection from "@/app/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
-import Cursor from "@/shared/Cursor";
+import Cursor from "@/components/shared/Cursor";
 import { NAV_ITEMS } from "../data";
-import ParticlesBackground from "@/shared/ParticlesBackground";
-import ChatWidget from "@/shared/ChatWidget";
+import ParticlesBackground from "@/components/shared/ParticlesBackground";
+import ChatWidget from "@/components/shared/chatbot/ChatWidget";
 
 function Divider() {
   return (

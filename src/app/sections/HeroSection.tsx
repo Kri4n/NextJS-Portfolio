@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FileUser } from "lucide-react";
 import { HeroSectionProps } from "../../types";
-import { heroTitleVariants } from "../../shared/animations";
+import { heroTitleVariants } from "../../components/shared/animations";
 import Link from "next/link";
 import ScrollIndicator from "@/components/custom/ScrollIndicator";
 import HeroTerminal from "@/components/custom/Terminal";

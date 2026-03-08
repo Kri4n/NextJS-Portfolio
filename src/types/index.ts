@@ -39,3 +39,8 @@ export interface GitHubUser {
   location: string;
   created_at: string;
 }
+
+export interface Message {
+  role: "user" | "assistant";
+  content: string;
+}

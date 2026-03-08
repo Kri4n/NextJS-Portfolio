@@ -5,7 +5,7 @@ import Image from "next/image";
 import {
   staggerContainerVariants,
   staggerItemVariants,
-} from "../../shared/animations";
+} from "../../components/shared/animations";
 
 export default function AboutSection() {
   return (
