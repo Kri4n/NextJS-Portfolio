@@ -2,11 +2,56 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Message } from "@/types";
+import { AlertCircle, RefreshCw, Clock } from "lucide-react";
+import { ChatErrorProps, ErrorState, Message } from "@/types";
 import TypingIndicator from "./TypingIndicator";
 import FormattedMessage from "./FormattedMessage";
 
-/* ChatWidget */
+/* ─────────────────────────────────────────────
+   ChatError
+───────────────────────────────────────────── */
+const isRetryable = (code?: string) =>
+  code === "GEMINI_NETWORK" ||
+  code === "GEMINI_UNKNOWN" ||
+  code === "GEMINI_TIMEOUT" ||
+  code === "UNKNOWN";
+
+const isQuotaError = (code?: string) =>
+  code === "RATE_LIMITED_IP" ||
+  code === "RATE_LIMITED_GLOBAL" ||
+  code === "GEMINI_QUOTA";
+
+function ChatError({ message, code, onRetry }: ChatErrorProps) {
+  const Icon = isQuotaError(code) ? Clock : AlertCircle;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="flex items-start gap-2 px-3 py-2.5 rounded-lg bg-red-500/8 border border-red-500/15 mx-1"
+    >
+      <Icon className="w-3 h-3 text-red-400/70 mt-0.5 shrink-0" />
+      <div className="flex flex-col gap-1.5 min-w-0">
+        <p className="font-mono text-[0.66rem] text-red-400/80 leading-relaxed">
+          {message}
+        </p>
+        {isRetryable(code) && onRetry && (
+          <button
+            onClick={onRetry}
+            className="flex items-center gap-1 font-mono text-[0.62rem] text-amber-400/60 hover:text-amber-400/90 transition-colors w-fit"
+          >
+            <RefreshCw className="w-2.5 h-2.5" />
+            try again
+          </button>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   ChatWidget
+───────────────────────────────────────────── */
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -18,7 +63,7 @@ export default function ChatWidget() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<ErrorState | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -28,7 +73,7 @@ export default function ChatWidget() {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages, loading, error]);
 
   const sendMessage = async () => {
     const text = input.trim();
@@ -38,7 +83,7 @@ export default function ChatWidget() {
     const updated = [...messages, userMsg];
     setMessages(updated);
     setInput("");
-    setError("");
+    setError(null);
     setLoading(true);
 
     try {
@@ -51,8 +96,10 @@ export default function ChatWidget() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error ?? "Something went wrong.");
-        setLoading(false);
+        setError({
+          message: data.error ?? "Something went wrong.",
+          code: data.code,
+        });
         return;
       }
 
@@ -61,7 +108,10 @@ export default function ChatWidget() {
         { role: "assistant", content: data.reply },
       ]);
     } catch {
-      setError("Network error. Please try again.");
+      setError({
+        message: "Network error. Please check your connection and try again.",
+        code: "GEMINI_NETWORK",
+      });
     } finally {
       setLoading(false);
     }
@@ -154,9 +204,11 @@ export default function ChatWidget() {
               )}
 
               {error && (
-                <div className="font-mono text-[0.68rem] text-red-400/70 text-center px-2">
-                  {error}
-                </div>
+                <ChatError
+                  message={error.message}
+                  code={error.code}
+                  onRetry={sendMessage}
+                />
               )}
 
               <div ref={bottomRef} />
@@ -254,7 +306,6 @@ export default function ChatWidget() {
           )}
         </AnimatePresence>
 
-        {/* Unread dot — shows when closed */}
         {!open && (
           <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#0f0f0f]" />
         )}

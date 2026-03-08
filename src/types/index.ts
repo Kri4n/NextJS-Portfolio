@@ -44,3 +44,34 @@ export interface Message {
   role: "user" | "assistant";
   content: string;
 }
+
+export interface ErrorState {
+  message: string;
+  code?: string;
+}
+
+export interface ChatErrorProps {
+  message: string;
+  code?: string;
+  onRetry?: () => void;
+}
+
+export interface ModelConfig {
+  id: string;
+  name: string;
+  maxRPM: number;
+  maxRPD: number;
+  maxTPM: number;
+  priority: number; // lower = preferred
+}
+
+export interface ModelUsage {
+  rpm: number;
+  rpmWindowStart: number;
+  rpd: number;
+  rpdWindowStart: number;
+}
+
+export type FallbackResult =
+  | { success: true; text: string; modelUsed: string }
+  | { success: false; code: string; error: string };
