@@ -7,13 +7,6 @@ export const NAV_ITEMS = [
   "contact",
 ];
 
-export const stats = [
-  { val: "2+", label: "Years of Experience" },
-  { val: "5+", label: "Projects Shipped" },
-  { val: "2", label: "Companies Worked" },
-  { val: "10+", label: "Technologies Used" },
-];
-
 export const skills: Record<string, string[]> = {
   "Backend / DB": [
     "MongoDB",
@@ -26,8 +19,9 @@ export const skills: Record<string, string[]> = {
     ".Net",
     "Prisma",
     "Entity Framework Core",
+    "Redis"
   ],
-  Frontend: [
+  "Frontend": [
     "HTML5",
     "CSS",
     "Shadcn UI",
@@ -87,5 +81,47 @@ export const projects = [
     stack: ["React", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
     link: "https://writescape.vercel.app/",
     image: "/images/projects/writescape.png",
+  },
+];
+
+export const experience = [
+  {
+    company: "AIQUE Innovation Technology Corporation",
+    role: "Full-Stack Developer",
+    type: "Full-Time",
+    period: "April 2026 – Present",
+    location: "Bonifacio Global City, Philippines",
+    current: true,
+    highlights: [
+      "lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    ],
+  },
+  {
+    company: "Archangel Technologies, Inc.",
+    role: "Software Developer",
+    type: "Full-Time",
+    period: "May 2025 – March 2026",
+    location: "Mandaluyong City, Philippines",
+    current: false,
+    highlights: [
+      "Collaborated with cross-functional teams to test and resolve user-reported issues from multiple clients in an employee timekeeping with VPN connection cross-platform application.",
+      "Implemented new features like a version checker with automated updates, remember me on login and login with biometrics using fingerprint.",
+      "Deployed an iOS app for internal testing using TestFlight in app store connect and also on app store for production.",
+      "Set up and managed separate development, staging, and production environments for multiple clients to ensure stable deployments and minimize production issues.",
+      "Optimized and Improved the API response time for getting the date and time by approximately 60–70%.",
+    ],
+  },
+  {
+    company: "U&I Global",
+    role: "Freelance Web Developer",
+    type: "Project-Based",
+    period: "February 2025 – March 2025",
+    location: "Brisbane, Australia (Remote)",
+    current: false,
+    highlights: [
+      "Re-engineered the U&I Global Expo website, improving UX and consultation booking flow",
+      "Implemented modern responsive design using React and Tailwind CSS",
+      "Optimized performance with SPA architecture for faster navigation",
+    ],
   },
 ];
