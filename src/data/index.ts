@@ -32,11 +32,12 @@ export const skills: Record<string, string[]> = {
     "Flutter",
     "Next JS",
     "React",
+    "React Native",
     "JavaScript",
     "TypeScript",
     "Framer Motion",
   ],
-  "Cloud / CI/CD": ["Git", "Docker", "Postman", "GitLab", "Vercel", "Render"],
+  "DevOps / Cloud": ["AWS (Lambda, S3, EC2, API Gateway, IAM)","Git", "Docker", "Postman", "GitLab", "Vercel", "Render", "Terraform", "Caddy", "NGINX", "Linux", "GitHub Actions"],
 };
 
 export const projects = [
