@@ -104,7 +104,7 @@ function ExperienceCard({
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <Briefcase className="w-4 h-4 text-amber-500/60" />
-                  <h3 className="text-[1.2rem] font-semibold text-white">
+                  <h3 className="text-[1.2rem] font-semibold dark:text-white text-black">
                     {exp.role}
                   </h3>
                   {exp.current && (
@@ -122,14 +122,14 @@ function ExperienceCard({
                 <p className="text-amber-500 text-[0.9rem]">{exp.company}</p>
               </div>
               <div className="text-right flex flex-col items-end gap-1.5">
-                <p className="text-[0.8rem] text-gray-400">{exp.period}</p>
+                <p className="text-[0.8rem] text-gray-600 dark:text-gray-400">{exp.period}</p>
                 <Badge variant="outline" className="badge-emp-type">
                   {exp.type}
                 </Badge>
               </div>
             </div>
 
-            <p className="text-[0.75rem] text-gray-600 mb-6 tracking-wide flex items-center gap-1.5">
+            <p className="text-[0.75rem] dark:text-gray-400 text-gray-600 mb-6 tracking-wide flex items-center gap-1.5">
               <MapPin className="w-3 h-3" />
               {exp.location}
             </p>
@@ -144,7 +144,7 @@ function ExperienceCard({
               {exp.highlights.map((h, j) => (
                 <motion.li
                   key={j}
-                  className="flex items-start gap-3 text-[0.875rem] text-gray-400 font-light leading-relaxed"
+                  className="flex items-start gap-3 text-[0.875rem] dark:text-gray-400 text-gray-600 font-light leading-relaxed"
                   variants={staggerItemVariants}
                 >
                   <Diamond className="w-2 h-2 text-amber-500 mt-1.5 shrink-0 fill-amber-500" />
@@ -171,10 +171,10 @@ function EducationCard() {
               <GraduationCap className="w-3 h-3" />
               COLLEGE
             </p>
-            <h4 className="text-base text-gray-500 font-medium mb-1">
+            <h4 className="text-base dark:text-gray-400 text-gray-600 font-medium mb-1">
               University of San Agustin
             </h4>
-            <p className="text-[0.85rem] text-gray-500">
+            <p className="text-[0.85rem] dark:text-gray-400 text-gray-600">
               BS Information Technology · Sept 2020 – June 2024
             </p>
           </div>
@@ -183,10 +183,10 @@ function EducationCard() {
               <Code2 className="w-3 h-3" />
               Bootcamp
             </p>
-            <h4 className="text-base font-medium mb-1 text-gray-500 ">
+            <h4 className="text-base font-medium mb-1 dark:text-gray-400 text-gray-600">
               Zuitt Tech Program
             </h4>
-            <p className="text-[0.85rem] text-gray-500">
+            <p className="text-[0.85rem] dark:text-gray-400 text-gray-600">
               Main Course Package · Sept 2024 – Jan 2025
             </p>
           </div>

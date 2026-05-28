@@ -64,8 +64,7 @@ export default function SkillsSection() {
                     {items.map((skill) => (
                       <Badge
                         key={skill}
-                        variant="outline"
-                        className="skill-badge"
+                        className="skill-badge !text-gray-600 dark:!text-gray-400" 
                       >
                         {skill}
                       </Badge>

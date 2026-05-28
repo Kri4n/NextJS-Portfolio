@@ -9,9 +9,6 @@ import { fadeUpVariants } from "../../components/shared/animations";
 import Image from "next/image";
 import { useRef } from "react";
 
-/* ─────────────────────────────────────────────
-   Magnetic tilt card — each project lives here
-───────────────────────────────────────────── */
 function ProjectCard({
   project,
   index,
@@ -21,7 +18,6 @@ function ProjectCard({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  /* Parallax tilt */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateX = useSpring(useTransform(mouseY, [-1, 1], [4, -4]), {
@@ -64,10 +60,14 @@ function ProjectCard({
         whileHover="hovered"
         initial="rest"
         animate="rest"
-        className="relative group overflow-hidden rounded-sm border border-white/8 bg-[#0c0c0c] "
+        className="relative group overflow-hidden rounded-sm
+          border border-stone-200 bg-stone-50
+          dark:border-white/8 dark:bg-[#0c0c0c]"
       >
         {/* ── Large index number watermark ── */}
-        <span className="absolute top-4 right-5 font-mono text-[6rem] leading-none font-black text-white/4 select-none pointer-events-none z-0 tabular-nums">
+        <span className="absolute top-4 right-5 font-mono text-[6rem] leading-none font-black select-none pointer-events-none z-0 tabular-nums
+          text-stone-900/5
+          dark:text-white/4">
           {String(index + 1).padStart(2, "0")}
         </span>
 
@@ -75,7 +75,7 @@ function ProjectCard({
         <div className="relative w-full h-56 overflow-hidden">
           {/* Amber wash fades on hover */}
           <motion.div
-            className="absolute inset-0 z-10 pointer-events-none bg-amber-500/25 mix-blend-multiply"
+            className="absolute inset-0 z-10 pointer-events-none mix-blend-multiply"
             variants={{
               rest: { opacity: 1 },
               hovered: { opacity: 0, transition: { duration: 0.45 } },
@@ -84,7 +84,9 @@ function ProjectCard({
 
           {/* Diagonal reveal bar */}
           <motion.div
-            className="absolute inset-0 z-20 bg-[#0c0c0c] origin-left"
+            className="absolute inset-0 z-20 origin-left
+              bg-stone-50
+              dark:bg-[#0c0c0c]"
             variants={{
               rest: { scaleX: 0 },
               hovered: {
@@ -109,18 +111,16 @@ function ProjectCard({
               src={project.image}
               alt={project.name}
               fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+              className="object-cover transition-all duration-500"
             />
           </motion.div>
-
-          {/* Bottom scrim */}
-          <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#0c0c0c] to-transparent z-30" />
 
           {/* Tag pill — floats over image */}
           <div className="absolute top-4 left-4 z-40">
             <Badge
               variant="outline"
-              className="text-[0.65rem] tracking-widest uppercase border-amber-500/50 text-amber-400 bg-black/60 backdrop-blur-sm px-2.5 py-0.5"
+              className="text-[0.65rem] tracking-widest uppercase border-amber-500/50 text-amber-600 bg-white/80 backdrop-blur-sm px-2.5 py-0.5
+                dark:text-amber-400 dark:bg-black/60"
             >
               {project.tag}
             </Badge>
@@ -131,7 +131,9 @@ function ProjectCard({
         <div className="relative z-10 px-6 pt-5 pb-6 flex flex-col gap-4">
           {/* Title row */}
           <div className="flex items-start justify-between gap-4">
-            <h3 className="font-playfair text-[1.35rem] leading-snug tracking-tight text-white/90 group-hover:text-white transition-colors duration-300">
+            <h3 className="font-playfair text-[1.35rem] leading-snug tracking-tight transition-colors duration-300
+              text-stone-800/90 group-hover:text-stone-900
+              dark:text-white/90 dark:group-hover:text-white">
               {project.name}
             </h3>
 
@@ -151,17 +153,21 @@ function ProjectCard({
                 variant="outline"
                 size="icon"
                 asChild
-                className="w-8 h-8 rounded-full border-white/15 bg-transparent hover:bg-amber-500/10 hover:border-amber-500/50 transition-colors duration-300"
+                className="w-8 h-8 rounded-full transition-colors duration-300
+                  border-stone-300 bg-transparent hover:bg-amber-500/10 hover:border-amber-500/50
+                  dark:border-white/15 dark:hover:bg-amber-500/10 dark:hover:border-amber-500/50"
               >
                 <a href={project.link} target="_blank" rel="noreferrer">
-                  <ArrowUpRight className="w-3.5 h-3.5 text-amber-400" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                 </a>
               </Button>
             </motion.div>
           </div>
 
           {/* Description */}
-          <p className="text-white/40 text-xs leading-relaxed font-light line-clamp-2 group-hover:text-white/55 transition-colors duration-300">
+          <p className="text-xs leading-relaxed font-light line-clamp-2 transition-colors duration-300
+            text-stone-500 group-hover:text-stone-600
+            dark:text-white/40 dark:group-hover:text-white/55">
             {project.description}
           </p>
 
@@ -174,7 +180,9 @@ function ProjectCard({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 + si * 0.05, duration: 0.4 }}
-                className="text-[0.6rem] tracking-widest uppercase text-white/30 border border-white/8 rounded-full px-2.5 py-0.5 group-hover:border-amber-500/25 group-hover:text-amber-400/60 transition-all duration-300"
+                className="text-[0.6rem] tracking-widest uppercase rounded-full px-2.5 py-0.5 transition-all duration-300
+                  text-stone-400 border border-stone-200 group-hover:border-amber-500/40 group-hover:text-amber-600/70
+                  dark:text-white/30 dark:border-white/8 dark:group-hover:border-amber-500/25 dark:group-hover:text-amber-400/60"
               >
                 {s}
               </motion.span>
@@ -198,9 +206,6 @@ function ProjectCard({
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section
-───────────────────────────────────────────── */
 export default function ProjectsSection() {
   return (
     <section id="projects" className="py-28 px-8 max-w-275 mx-auto">
@@ -221,7 +226,7 @@ export default function ProjectsSection() {
         </h2>
       </motion.div>
 
-      {/* ── Masonry-ish responsive grid ── */}
+      {/* ── Grid ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {projects.map((p, i) => (
           <ProjectCard key={p.name} project={p} index={i} />

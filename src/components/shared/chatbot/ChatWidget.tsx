@@ -260,7 +260,7 @@ export default function ChatWidget() {
       {/* Floating Button */}
       <motion.button
         onClick={() => setOpen((prev) => !prev)}
-        className="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-xl bg-[#1e1e1e] border border-white/10 flex items-center justify-center shadow-lg shadow-black/40 hover:border-amber-400/30 hover:bg-[#252525] transition-all group"
+        className="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-xl bg-[#1e1e1e] border border-white/10 flex items-center justify-center transition-all group"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, y: 16 }}

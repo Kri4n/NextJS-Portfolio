@@ -70,10 +70,10 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
             custom={0.35}
           >
             <p className="text-[clamp(1.1rem,2vw,1.4rem)] text-gray-400 mb-2 font-light">
-              <span className="text-[#e8e3da]">{typed}</span>
+              <span className="text-black dark:text-white">{typed}</span>
               <span className="animate-blink text-amber-500">|</span>
             </p>
-            <p className="text-[0.95rem] text-gray-500 max-w-125 leading-relaxed mb-12 font-light">
+            <p className="text-[0.95rem] text-gray-600 dark:text-gray-400 max-w-125 leading-relaxed mb-12 font-light">
               Building user-friendly applications that makes life easier, one
               line of code at a time.
             </p>
@@ -105,7 +105,9 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
               <Button
                 variant="outline"
                 data-hover
-                className="btn-outline-hero px-10 py-3.5 group"
+                className="px-10 py-3.5 group border rounded-none text-[0.8rem] tracking-[0.15em] uppercase cursor-none h-auto transition-all duration-[250ms]
+                  text-stone-800 border-stone-800/20 hover:border-amber-500 hover:text-amber-500
+                  dark:text-[#e8e3da] dark:hover:border-amber-400 dark:hover:text-amber-400"
               >
                 Resume
                 <FileUser className="ml-2 w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" />

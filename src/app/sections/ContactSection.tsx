@@ -92,18 +92,41 @@ function ContactButton({
         }}
         whileTap={{ scale: 0.97 }}
       >
-        <Button variant="outline" asChild className="btn-contact">
-          <a
-            href={href}
-            data-hover
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 no-underline"
-          >
-            <span className="opacity-60">{icon}</span>
-            {label}
-          </a>
-        </Button>
+      <Button
+        variant="outline"
+        asChild
+        className="
+          bg-transparent
+          text-gray-600
+          dark:text-gray-400
+          rounded-none
+          text-[0.85rem]
+          tracking-[0.05em]
+          cursor-none
+          h-auto
+          px-6
+          py-3
+          transition-all
+          duration-200
+          dark:hover:border-amber-500
+          dark:hover:text-amber-500
+          dark:hover:bg-amber-500/5
+          hover:border-amber-500
+          hover:text-amber-500
+          hover:bg-amber-500/5
+        "
+      >
+        <a
+          href={href}
+          data-hover
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center gap-2 no-underline"
+        >
+          <span className="opacity-60">{icon}</span>
+          {label}
+        </a>
+      </Button>
       </motion.div>
     </motion.div>
   );
@@ -128,7 +151,7 @@ export default function ContactSection() {
             <span className="italic text-amber-500">something great?</span>
           </h2>
 
-          <p className="text-gray-500 mb-12 leading-relaxed font-light">
+          <p className="dark:text-gray-400 text-gray-600  mb-12 leading-relaxed font-light">
             Open to full-time roles, freelance projects, and exciting
             collaborations. Let&apos;s talk.
           </p>

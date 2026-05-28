@@ -37,7 +37,7 @@ export default function AboutSection() {
           </motion.h2>
 
           <motion.p
-            className="text-gray-400 leading-[1.85] mb-5 font-light text-[0.95rem]"
+            className="dark:text-gray-400 text-gray-600 leading-[1.85] mb-5 font-light text-[0.95rem]"
             variants={staggerItemVariants}
           >
             I&apos;m a Software Engineer from the Philippines with a BS in
@@ -46,7 +46,7 @@ export default function AboutSection() {
           </motion.p>
 
           <motion.p
-            className="text-gray-400 leading-[1.85] mb-5 font-light text-[0.95rem]"
+            className="dark:text-gray-400 text-gray-600 leading-[1.85] mb-5 font-light text-[0.95rem]"
             variants={staggerItemVariants}
           >
             I aim to continuously grow my skills in front-end and back-end

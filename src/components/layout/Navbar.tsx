@@ -4,19 +4,19 @@ import { useState } from "react";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { NavbarProps } from "../../types";
+import { ThemeToggle } from "../custom/ThemeToggle";
+import clsx from "clsx";
 
 const navItemVariants: Variants = {
   hidden: { opacity: 0, y: -12 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    color: "#9ca3af",
     transition: { duration: 0.5, ease: "easeOut", delay: i * 0.07 + 0.3 },
   }),
   active: (i: number) => ({
     opacity: 1,
     y: 0,
-    color: "#f59e0b",
     transition: { duration: 0.5, ease: "easeOut", delay: i * 0.07 + 0.3 },
   }),
 };
@@ -61,7 +61,7 @@ export default function Navbar({
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-1000 px-6 md:px-8 h-16 flex items-center justify-between border-b border-amber-500/10 backdrop-blur-md bg-[#0a0a0a]/85"
+        className="fixed top-0 left-0 right-0 z-1000 px-6 md:px-8 h-16 flex items-center justify-between border-b border-amber-500/10 backdrop-blur-md"
         initial={{ y: -64, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -80,26 +80,29 @@ export default function Navbar({
         {/* Desktop Nav Links — plain flex, no NavigationMenu wrapper */}
         <div className="hidden md:flex items-center gap-1">
           {navItems.map((n, i) => (
-            <motion.button
-              key={n}
-              data-hover
-              onClick={() => scrollTo(n)}
-              className="font-dm-sans text-[0.8rem] uppercase tracking-[0.15em] bg-transparent border-none cursor-none px-3 py-1.5"
-              variants={navItemVariants}
-              initial="hidden"
-              animate={activeNav === n ? "active" : "visible"}
-              custom={i}
-              whileHover={{ color: "#fbbf24" }}
-              transition={{ duration: 0.2 }}
-            >
-              {n}
-            </motion.button>
+          <motion.button
+            key={n}
+            data-hover
+            onClick={() => scrollTo(n)}
+            className={clsx(
+              "font-dm-sans text-[0.8rem] uppercase tracking-[0.15em] bg-transparent border-none cursor-none px-3 py-1.5 transition-colors",
+              activeNav === n
+                ? "text-amber-500"
+                : "dark:text-gray-400 text-gray-600 hover:text-amber-400"
+            )}
+            variants={navItemVariants}
+            initial="hidden"
+            animate={activeNav === n ? "active" : "visible"}
+            custom={i}
+          >
+            {n}
+          </motion.button>
           ))}
         </div>
 
         {/* Desktop CTA */}
         <motion.div
-          className="hidden md:block"
+          className="hidden md:block lg:flex gap-1"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.8, duration: 0.4 }}
@@ -112,6 +115,7 @@ export default function Navbar({
           >
             Hire Me
           </Button>
+          <ThemeToggle/>
         </motion.div>
 
         {/* Mobile Hamburger */}

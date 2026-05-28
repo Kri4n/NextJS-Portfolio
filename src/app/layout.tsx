@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from 'next-themes'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta
           name="google-site-verification"
@@ -54,7 +55,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-dm-sans antialiased bg-[#0a0a0a] text-[#e8e3da] cursor-none">
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

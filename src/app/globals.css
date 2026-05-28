@@ -6,8 +6,8 @@ body {
   overflow-x: hidden;
   cursor: none;
   font-family: "DM Sans", sans-serif;
-  background: #0a0a0a;
-  color: #e8e3da;
+  background: var(--background);  
+  color: var(--foreground); 
 }
 
 ::-webkit-scrollbar {
@@ -161,24 +161,6 @@ body {
   background: #e8e3da !important;
 }
 
-/* ── Hero outline button ────────────────────────────────────────────────── */
-.btn-outline-hero {
-  background: transparent;
-  color: #e8e3da;
-  border: 1px solid rgba(232, 227, 218, 0.2);
-  border-radius: 0;
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: none;
-  height: auto;
-  transition: all 0.25s;
-}
-.btn-outline-hero:hover {
-  border-color: #f59e0b !important;
-  color: #f59e0b !important;
-}
-
 /* ── Stat card ──────────────────────────────────────────────────────────── */
 .stat-card {
   background: rgba(245, 158, 11, 0.03);
@@ -305,25 +287,6 @@ body {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0;
-}
-
-/* ── Contact link button ────────────────────────────────────────────────── */
-.btn-contact {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #9ca3af;
-  border-radius: 0;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  cursor: none;
-  height: auto;
-  padding: 0.75rem 1.5rem;
-  transition: all 0.25s;
-}
-.btn-contact:hover {
-  border-color: #f59e0b !important;
-  color: #f59e0b !important;
-  background: rgba(245, 158, 11, 0.05) !important;
 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */

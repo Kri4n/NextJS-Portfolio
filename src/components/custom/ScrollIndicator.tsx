@@ -9,7 +9,7 @@ const ScrollIndicator = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.6 }}
     >
-      <span className="text-[0.65rem] tracking-[0.25em] uppercase text-gray-600">
+      <span className="text-[0.65rem] tracking-[0.25em] uppercase text-gray-600 dark:text-gray-400">
         Scroll
       </span>
       <motion.div
