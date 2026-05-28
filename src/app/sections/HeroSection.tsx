@@ -105,9 +105,17 @@ export default function HeroSection({ scrollTo }: HeroSectionProps) {
               <Button
                 variant="outline"
                 data-hover
-                className="px-10 py-3.5 group border rounded-none text-[0.8rem] tracking-[0.15em] uppercase cursor-none h-auto transition-all duration-[250ms]
-                  text-stone-800 border-stone-800/20 hover:border-amber-500 hover:text-amber-500"
-              >
+                className="
+                  px-10 py-3.5 group
+                  border rounded-none
+                  text-[0.8rem] tracking-[0.15em] uppercase
+                  cursor-none h-auto transition-all duration-[250ms]
+                  border-stone-300 dark:border-stone-700
+                  text-stone-800 dark:text-stone-200
+                  bg-transparent
+                  hover:border-amber-500 hover:text-amber-500
+                  dark:hover:border-amber-500 dark:hover:text-amber-500
+                ">
                 Resume
                 <FileUser className="ml-2 w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" />
               </Button>
