@@ -317,7 +317,7 @@ function PromptRow({ cmd }: { cmd: string }) {
       <span className="text-emerald-400/70">~/Documents/portfolio</span>
       <span className="text-blue-300"> (main)</span>
       <span className="text-amber-400/80"> ❯</span>
-      <span className="text-white ml-1">{cmd}</span>
+      <span className="text-white dark:text-white ml-1">{cmd}</span>
     </div>
   );
 }
@@ -598,7 +598,7 @@ export default function HeroTerminal() {
                 <span className="text-amber-400/80"> ❯</span>
               </div>
               <div className="flex items-center">
-                <span>{input}</span>
+                <span className="text-white dark:text-white">{input}</span>
                 <span className="inline-block w-1 h-3.25 bg-amber-400/70 animate-[blink_1.1s_step-end_infinite] align-middle ml-0.5 rounded-[1px]" />
               </div>
             </motion.div>
