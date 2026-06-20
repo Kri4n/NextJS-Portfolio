@@ -102,7 +102,7 @@ export default function Navbar({
 
         {/* Desktop CTA */}
         <motion.div
-          className="hidden md:block lg:flex gap-1"
+          className="hidden md:flex gap-1"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.8, duration: 0.4 }}
@@ -119,39 +119,49 @@ export default function Navbar({
         </motion.div>
 
         {/* Mobile Hamburger */}
-        <motion.button
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.25 cursor-pointer bg-transparent border-none"
-          onClick={() => setMobileOpen((prev) => !prev)}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          aria-label="Toggle menu"
-        >
-          <motion.span
-            className="block h-px w-6 bg-amber-500 origin-center"
-            animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          />
-          <motion.span
-            className="block h-px w-6 bg-amber-500 origin-center"
-            animate={
-              mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }
-            }
-            transition={{ duration: 0.2 }}
-          />
-          <motion.span
-            className="block h-px w-6 bg-amber-500 origin-center"
-            animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          />
-        </motion.button>
+        <div className="md:hidden flex items-center gap-3">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            <ThemeToggle />
+          </motion.div>
+
+          <motion.button
+            className="flex flex-col justify-center items-center w-8 h-8 gap-1.25 cursor-pointer bg-transparent border-none"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              className="block h-px w-6 bg-amber-500 origin-center"
+              animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+            <motion.span
+              className="block h-px w-6 bg-amber-500 origin-center"
+              animate={
+                mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }
+              }
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="block h-px w-6 bg-amber-500 origin-center"
+              animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+          </motion.button>
+        </div>
       </motion.nav>
 
       {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed top-16 left-0 right-0 z-999 bg-[#0a0a0a]/97 backdrop-blur-md border-b border-amber-500/10 md:hidden"
+            className="fixed top-16 left-0 right-0 z-999 bg-white/97 dark:bg-[#0a0a0a]/97 backdrop-blur-md border-b border-amber-500/10 md:hidden"
             variants={mobileMenuVariants}
             initial="hidden"
             animate="visible"
