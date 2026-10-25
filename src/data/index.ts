@@ -19,7 +19,10 @@ export const skills: Record<string, string[]> = {
     ".Net",
     "Prisma",
     "Entity Framework Core",
-    "Redis"
+    "Redis",
+    "Python",
+    "FastAPI",
+    "Qdrant"
   ],
   "Frontend": [
     "HTML5",
@@ -37,10 +40,18 @@ export const skills: Record<string, string[]> = {
     "TypeScript",
     "Framer Motion",
   ],
-  "DevOps / Cloud": ["AWS (Lambda, S3, EC2, API Gateway, IAM)","Git", "Docker", "Postman", "GitLab", "Vercel", "Render", "Terraform", "Caddy", "NGINX", "Linux", "GitHub Actions"],
+  "DevOps / Cloud / AI": ["AWS (Lambda, S3, EC2, API Gateway, IAM)","Git", "Docker", "Postman", "GitLab", "Vercel", "Render", "Terraform", "Caddy", "NGINX", "Linux", "GitHub Actions", "LlamaIndex", "Gemini API"],
 };
 
 export const projects = [
+  {
+    name: "DocuMind",
+    tag: "AI Document Q&A",
+    description: "Document AI application that uses RAG to answer questions based on uploaded documents.",
+    stack: ["Streamlit", "Python", "Gemini API", "LlamaIndex", "Qdrant"],
+    link: "https://documind-client-dcl3.onrender.com/",
+    image: "/images/projects/DocuMind.png",
+  },
   {
     name: "FindThere",
     tag: "Lost & Found",
